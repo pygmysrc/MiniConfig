@@ -6,7 +6,7 @@ return {
     { 'neovim/nvim-lspconfig' }, -- Required
     { -- Optional
       'williamboman/mason.nvim',
-      build = function()
+      build = function(vim)
         pcall(vim.cmd, 'MasonUpdate')
       end,
     },
@@ -16,7 +16,6 @@ return {
         require('mason').setup()
         require('mason-lspconfig').setup {
           ensure_installed = {
-            'lua_ls',
             'astro',
             'cssls',
             'cssmodules_ls',
