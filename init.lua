@@ -1,3 +1,4 @@
+-- required by lazy.nvim
 vim.g.mapleader = ' '
 
 require 'config.bootstrap'
