@@ -19,6 +19,7 @@ return {
         starter.gen_hook.padding(3, 2),
       }
     }
+    require('mini.sessions').setup {}
     require('mini.bufremove').setup {}
     require('mini.indentscope').setup {}
     require('mini.tabline').setup {
