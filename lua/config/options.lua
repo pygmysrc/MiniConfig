@@ -44,7 +44,7 @@ local options = {
 vim.cmd [[ filetype plugin indent on ]]
 vim.cmd [[ set shm+=cIt ]]
 vim.cmd [[ set background=dark ]]
-vim.cmd [[ colorscheme poimandres ]]
+vim.cmd [[ colorscheme gruvbox ]]
 
 -- do not source default filetype.nvim
 vim.g.did_load_filetypes = 1

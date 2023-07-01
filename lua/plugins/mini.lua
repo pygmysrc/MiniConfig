@@ -8,16 +8,19 @@ return {
       evaluate_single = true,
       items = {
         starter.sections.builtin_actions(),
-        starter.sections.recent_files(5, false),
-        starter.sections.recent_files(5, true),
+        starter.sections.recent_files(3, false),
+        starter.sections.recent_files(3, true),
         -- Use this if you set up 'mini.sessions'
         starter.sections.sessions(5, true),
       },
+      header = '',
+      footer = '',
       content_hooks = {
         starter.gen_hook.adding_bullet(),
+        starter.gen_hook.aligning('center', 'center'),
         starter.gen_hook.indexing('all', { 'Builtin actions' }),
-        starter.gen_hook.padding(3, 2),
-      }
+      },
+      silent = true,
     }
     require('mini.sessions').setup {}
     require('mini.bufremove').setup {}
