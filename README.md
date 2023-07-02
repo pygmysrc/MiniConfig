@@ -11,6 +11,7 @@ minimal neovim config for use with termux, or without
   git clone https://github.com/pygmysrc/mini-config.git
   ~/.config/nvim
   ```
+- start nvim
 
 ## key mappings
 | s : save  | H : bprev |
