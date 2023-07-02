@@ -23,6 +23,7 @@ vim.api.nvim_set_keymap(
 
 vim.api.nvim_set_keymap('n', 's', ':w<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', 'q', ':qa!<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'z', ':only!<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>x', ':xa<cr>', { noremap = true })
 

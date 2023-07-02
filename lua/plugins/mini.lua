@@ -11,7 +11,7 @@ return {
         starter.sections.recent_files(3, false),
         starter.sections.recent_files(3, true),
         -- Use this if you set up 'mini.sessions'
-        starter.sections.sessions(5, true),
+        -- starter.sections.sessions(5, true),
       },
       header = '',
       footer = '',
@@ -22,7 +22,6 @@ return {
       },
       silent = true,
     }
-    require('mini.sessions').setup {}
     require('mini.bufremove').setup {}
     require('mini.indentscope').setup {}
     require('mini.tabline').setup {

@@ -39,10 +39,11 @@ local options = {
   undofile = true,
   ignorecase = true,
   cmdheight = 2,
+  shortmess = 'aoOstTWAIcCqFS',
 }
 
 vim.cmd [[ filetype plugin indent on ]]
-vim.cmd [[ set shm+=cIt ]]
+-- vim.cmd [[ set shm+=cIt ]]
 vim.cmd [[ set background=dark ]]
 vim.cmd [[ colorscheme gruvbox ]]
 
