@@ -3,3 +3,13 @@
 ![Screenshot_2023-07-01-23-36-17-531_com termux](https://github.com/pygmysrc/mini-config/assets/57778636/e7fe2c6d-f734-431c-b9d3-12ea4ea7f65c)
 
 minimal neovim config for use with termux, or without
+
+## key mappings
+
+| t : save  | H : bprev |
+| q : quit  | L : bnext |
+| z : only             |
+| <leader>e : explorer    |
+| <leader>d : bdelete     |
+| <leader>w : save        |
+| <leader>x : save / quit | 
