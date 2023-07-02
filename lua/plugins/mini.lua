@@ -10,8 +10,6 @@ return {
         starter.sections.builtin_actions(),
         starter.sections.recent_files(3, false),
         starter.sections.recent_files(3, true),
-        -- Use this if you set up 'mini.sessions'
-        -- starter.sections.sessions(5, true),
       },
       header = '',
       footer = '',
@@ -24,6 +22,7 @@ return {
     }
     require('mini.bufremove').setup {}
     require('mini.indentscope').setup {}
+    require('mini.pairs').setup {}
     require('mini.tabline').setup {
       show_icons = false,
       tabpage_section = 'right',

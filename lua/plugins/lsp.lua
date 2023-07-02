@@ -27,9 +27,24 @@ return {
         }
       end,
     }, -- Optional
-
-    -- Autocompletion
-    { 'hrsh7th/nvim-cmp' }, -- Required
+    {
+      'hrsh7th/nvim-cmp',
+      config = function()
+        local cmp = require 'cmp'
+        cmp.setup {
+          mapping = {
+            ["<cr>"] = cmp.mapping.confirm { select = true },
+            ["<space>"] = cmp.mapping.confirm { select = true },
+          },
+          sources = {
+            { name = 'nvim_lsp' },
+            { name = 'luasnip' },
+            { name = 'buffer' },
+            { name = 'path' },
+          },
+        }
+      end,
+    }, -- Required
     { 'hrsh7th/cmp-nvim-lsp' }, -- Required
     { 'L3MON4D3/LuaSnip' }, -- Required
   },

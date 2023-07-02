@@ -4,8 +4,13 @@
 
 minimal neovim config for use with termux, or without
 
-## key mappings
+## setup
+- backup your own config
+- clone this repository 
+- git clone https://github.com/pygmysrc/mini-config.git
+  ~/.config/nvim
 
+## key mappings
 | s : save  | H : bprev |
 | q : quit  | L : bnext |
 | z : only             |

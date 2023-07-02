@@ -1,7 +1,5 @@
--- use new module loader
-vim.loader.enable()
--- required by lazy.nvim
-vim.g.mapleader = ' '
+vim.loader.enable() -- use new module loader
+vim.g.mapleader = ' ' -- required by lazy.nvim
 
 require 'config.bootstrap'
 require 'config.options'
