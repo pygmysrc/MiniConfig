@@ -28,6 +28,7 @@ return {
         'typescript',
         'vim',
         'vimdoc',
+        'toml',
         'yaml',
       },
       filetypes = {
