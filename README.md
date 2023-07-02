@@ -6,10 +6,10 @@ minimal neovim config for use with termux, or without
 
 ## key mappings
 
-| t : save  | H : bprev |
+| s : save  | H : bprev |
 | q : quit  | L : bnext |
 | z : only             |
-| <leader>e : explorer    |
-| <leader>d : bdelete     |
-| <leader>w : save        |
-| <leader>x : save / quit | 
+| <leader> e : explorer    |
+| <leader> d : bdelete     |
+| <leader> w : save        |
+| <leader> x : save / quit | 
