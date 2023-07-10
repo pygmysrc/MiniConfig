@@ -33,8 +33,7 @@ return {
         local cmp = require 'cmp'
         cmp.setup {
           mapping = {
-            ["<cr>"] = cmp.mapping.confirm { select = true },
-            ["<space>"] = cmp.mapping.confirm { select = true },
+            ['<cr>'] = cmp.mapping.confirm { select = true }
           },
           sources = {
             { name = 'nvim_lsp' },

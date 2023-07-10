@@ -24,7 +24,7 @@ local options = {
   sidescrolloff = 9999,
   shiftround = true,
   shiftwidth = 2,
-  shortmess = 'aoOstTWAIcCqFS',
+  -- shortmess = 'aoOstTWAIcCqFS',
   showmatch = true,
   showmode = false,
   showtabline = 2,
@@ -42,7 +42,7 @@ local options = {
   updatetime = 50,
   virtualedit = { 'block' },
   whichwrap = 'bs<>[]hl',
-  wildmode = { 'list', 'longest' },
+  -- wildmode = { 'list', 'longest' },
   wrap = false,
   writebackup = false,
 }
@@ -51,6 +51,12 @@ vim.cmd [[ filetype plugin indent on ]]
 -- vim.cmd [[ set shm+=cIt ]]
 vim.cmd [[ set background=dark ]]
 vim.cmd [[ colorscheme gruvbox ]]
+
+-- clear registers
+vim.cmd [[ autocmd VimEnter * WipeReg ]]
+vim.cmd [[ 
+command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
+ ]]
 
 -- do not source default filetype.nvim
 vim.g.did_load_filetypes = 1

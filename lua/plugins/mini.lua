@@ -9,7 +9,7 @@ return {
       items = {
         starter.sections.builtin_actions(),
         starter.sections.recent_files(3, false),
-        starter.sections.recent_files(3, true),
+        -- starter.sections.recent_files(3, true),
       },
       header = '',
       footer = '',
@@ -24,11 +24,10 @@ return {
     require('mini.indentscope').setup {}
     require('mini.pairs').setup {}
     require('mini.tabline').setup {
-      show_icons = false,
-      tabpage_section = 'right',
+      show_icons = false
     }
     require('mini.statusline').setup {
-      use_icons = false,
+      use_icons = false
     }
   end,
 }

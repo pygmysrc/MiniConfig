@@ -23,10 +23,11 @@ vim.api.nvim_set_keymap(
 )
 
 vim.api.nvim_set_keymap('n', 's', ':w<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', 'q', ':qa!<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'q', ':wq<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'Q', ':qa!<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', 'z', ':only!<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>x', ':xa<cr>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>x', ':xa<cr>', { noremap = true })
 
 vim.keymap.set(
   'n',
@@ -34,4 +35,5 @@ vim.keymap.set(
   require('oil').open,
   { desc = 'open parent dir' }
 )
+
 vim.keymap.set('n', '-', require('oil').open, { noremap = true, silent = true })
