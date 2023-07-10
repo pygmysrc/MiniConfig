@@ -1,4 +1,4 @@
-| screenshot | description|
+|  | |
 | ---        | ---        |
 | <img src='https://github.com/pygmysrc/mini-config/assets/57778636/3cd07884-6bf7-4f4d-8b8c-7f2577f62287' height='400px' /> | `mini.start` |
 | <img src='https://github.com/pygmysrc/mini-config/assets/57778636/d0413537-8e36-42f3-a8d4-6b8a93b3b2ad' height='400px' /> | `oil.nvim` |
@@ -7,7 +7,7 @@
 
 minimal neovim config for use with termux, or without
 
-## setup
+# Setup
 - backup your own config
 - clone this repository 
   ```
@@ -15,11 +15,9 @@ minimal neovim config for use with termux, or without
   ~/.config/nvim
   ```
 - start neovim
-  ```
-  nvim
-  ```
 
-## key mappings
+
+# Shortcuts
 
 | key                         | code                |
 | :---                        | ---:                |
@@ -32,4 +30,3 @@ minimal neovim config for use with termux, or without
 | `_d`                        | `bdelete`           |
 | `_w`                        | `save`              |
 | `_q`                        | `save / quit`       |
-
