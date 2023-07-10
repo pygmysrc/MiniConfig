@@ -27,7 +27,7 @@ return {
           ['.'] = 'actions.toggle_hidden',
           ['_'] = 'actions.open_cwd',
         },
-        skip_confirm_for_simple_edits = false,
+        skip_confirm_for_simple_edits = true,
         use_default_keymaps = false,
         show_hidden = true,
         float = {

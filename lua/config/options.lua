@@ -50,7 +50,7 @@ local options = {
 vim.cmd [[ filetype plugin indent on ]]
 -- vim.cmd [[ set shm+=cIt ]]
 vim.cmd [[ set background=dark ]]
-vim.cmd [[ colorscheme gruvbox ]]
+vim.cmd [[ colorscheme rose-pine ]]
 
 -- clear registers
 vim.cmd [[ autocmd VimEnter * WipeReg ]]

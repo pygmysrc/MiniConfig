@@ -1,39 +1,24 @@
-vim.api.nvim_set_keymap('n', ' ', ' ', { noremap = true })
-vim.api.nvim_set_keymap('x', ' ', ' ', { noremap = true })
+local map = vim.keymap.set
+local opts = {
+  noremap = true,
+  silent = true,
+}
 
-vim.api.nvim_set_keymap(
-  'n',
-  'H',
-  ':bprev<cr>',
-  { noremap = true, silent = true }
-)
+map('n', ' ', ' ', opts)
+map('x', ' ', ' ', opts)
+map('n', 'H', ':bprev<cr>', opts)
+map('n', 'L', ':bnext<cr>', opts)
+map('n', '<leader>d', ':bdelete<cr>', opts)
+map('n', 's', ':w<cr>', opts)
+map('n', 'q', ':wq<cr>', opts)
+map('n', 'Q', ':qa!<cr>', opts)
+map('n', 'z', ':only!<cr>', opts)
+map('n', '<leader>w', ':w<cr>', opts)
+-- map('n', '<leader>x', ':xa<cr>', opts)
 
-vim.api.nvim_set_keymap(
-  'n',
-  'L',
-  ':bnext<cr>',
-  { noremap = true, silent = true }
-)
+map('n', '<leader>e', require('oil').open, { desc = 'open parent dir' })
 
-vim.api.nvim_set_keymap(
-  'n',
-  '<leader>d',
-  ':bdelete<cr>',
-  { noremap = true, silent = true }
-)
+map('n', '-', require('oil').open, opts)
 
-vim.api.nvim_set_keymap('n', 's', ':w<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', 'q', ':wq<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', 'Q', ':qa!<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', 'z', ':only!<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>w', ':w<cr>', { noremap = true })
--- vim.api.nvim_set_keymap('n', '<leader>x', ':xa<cr>', { noremap = true })
-
-vim.keymap.set(
-  'n',
-  '<leader>e',
-  require('oil').open,
-  { desc = 'open parent dir' }
-)
-
-vim.keymap.set('n', '-', require('oil').open, { noremap = true, silent = true })
+-- native lsp formatting
+map('n', '<leader>f', vim.lsp.buf.format)

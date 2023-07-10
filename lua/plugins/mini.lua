@@ -24,10 +24,10 @@ return {
     require('mini.indentscope').setup {}
     require('mini.pairs').setup {}
     require('mini.tabline').setup {
-      show_icons = false
+      show_icons = false,
     }
     require('mini.statusline').setup {
-      use_icons = false
+      use_icons = false,
     }
   end,
 }
