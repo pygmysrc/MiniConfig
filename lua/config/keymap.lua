@@ -22,3 +22,4 @@ map('n', '-', require('oil').open, opts)
 
 -- native lsp formatting
 map('n', '<leader>f', vim.lsp.buf.format)
+
