@@ -9,9 +9,8 @@ return {
       items = {
         starter.sections.builtin_actions(),
         starter.sections.recent_files(3, false),
-        -- starter.sections.recent_files(3, true),
       },
-      header = '',
+      header = 'MiniConfig',
       footer = '',
       content_hooks = {
         starter.gen_hook.adding_bullet(),
