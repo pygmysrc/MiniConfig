@@ -3,4 +3,5 @@ vim.g.mapleader = ' ' -- required by lazy.nvim
 
 require 'config.lazy'
 require 'config.options'
-require 'config.keymap'
+require 'config.colors'
+require 'config.keymaps'
