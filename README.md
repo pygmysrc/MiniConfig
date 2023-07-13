@@ -19,11 +19,10 @@ minimal neovim config for use with termux, or without
 
 |     |         |      |               |
 | --- | ---     | ---  | ---           |
-| `s` | `save`  | `_e` | `files`       |
+| `s` | `save`  | `_e` | `files`       | `z` | `only`  |
 | `q` | `quit`  | `_d` | `bdelete`     |
 | `H` | `bprev` | `_w` | `save`        |
 | `L` | `bnext` | `_q` | `save / quit` |
-| `z` | `only`  |
 
 ## Setup
 - backup config
