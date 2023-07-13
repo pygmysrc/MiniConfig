@@ -3,6 +3,7 @@ return {
   -- color schemes
   {
     'mcchrish/zenbones.nvim',
+    lazy = false,
     dependencies = 'rktjmp/lush.nvim',
   },
   {
@@ -15,13 +16,6 @@ return {
         }
       end,
     },
-  },
-  {
-    'olivercederborg/poimandres.nvim',
-    lazy = false,
-    config = function()
-      require('poimandres').setup {}
-    end,
   },
   {
     'ellisonleao/gruvbox.nvim',

@@ -3,12 +3,12 @@ require('rose-pine').setup {
 }
 
 vim.cmd [[ set background=dark ]]
-vim.cmd [[ colorscheme rose-pine ]]
+vim.cmd [[ colorscheme randombones ]]
 
 function ColorMyNvim(color)
   local hi = vim.api.nvim_set_hl
-  color = color or 'rose-pine'
-  vim.cmd.colorscheme(color)
+  color = color or 'randombones'
+  -- vim.cmd.colorscheme(color)
 
   local hlNormal = vim.api.nvim_get_hl_by_name('BufferCurrent', true)
   local hlVisual = vim.api.nvim_get_hl_by_name('Visual', true)
