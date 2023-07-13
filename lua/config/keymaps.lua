@@ -7,7 +7,7 @@ local opts = {
 map('n', ' ', ' ', opts)
 map('x', ' ', ' ', opts)
 
--- leader mappings
+-- Leader mappings
 map('n', '<leader>d', ':bdelete<cr>', opts) -- delete buffer
 map('n', '<leader>e', require('oil').open)
 map('n', '<leader>f', vim.lsp.buf.format)   -- lsp formatting
@@ -29,11 +29,11 @@ map("v", ">", ">gv")
 
 map("n", "gw", "*N", opts) -- search word
 
--- clear search with <esc>
+-- Clear search with <esc>
 map("n", "<esc>", "<cmd>noh<cr><esc>", opts)
 map({ "n", "v" }, "<leader>d", [["_d]])
 
--- highlights under cursor
+-- Highlights under cursor
 map("n", "<leader>ui", vim.show_pos)
 
 map({ "n", "v" }, "<leader>s", '!sort -u<cr>')
@@ -41,7 +41,7 @@ map({ "n", "v" }, "<leader>s", '!sort -u<cr>')
 map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
 
--- from theprimeagen
+-- From theprimeagen
 map("v", "J", ":m '>+1<CR>gv=gv") -- move lines
 map("v", "K", ":m '<-2<CR>gv=gv")
 map("n", "J", "mzJ`z")            -- better join
@@ -50,10 +50,12 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")            -- search next
 map("n", "N", "Nzzzv")            -- search prev
 
--- from lazy.nvim
+-- From lazy.nvim
 --
 -- Mini.Trailspace
 map('n', '<leader>th', ':lua MiniTrailspace.highlight()<cr>')
 map('n', '<leader>tl', ':lua MiniTrailspace.trim_last_lines()<cr>')
 map('n', '<leader>tt', ':lua MiniTrailspace.trim()<cr>')
 map('n', '<leader>tu', ':lua MiniTrailspace.unhighlight()<cr>')
+
+-- Fuzzy matching

@@ -19,9 +19,15 @@ return {
       },
       silent = true,
     }
+    require('mini.align').setup {}
     require('mini.bufremove').setup {}
     require('mini.indentscope').setup {}
-    require('mini.pairs').setup {}
+    require('mini.pairs').setup {
+      mappings = {
+        ['<'] = { action = 'open', pair = '<>', neigh_pattern = '[^\\].' },
+        ['>'] = { action = 'close', pair = '<>', neigh_pattern = '[^\\].' },
+      }
+    }
     require('mini.tabline').setup {
       show_icons = false,
     }
