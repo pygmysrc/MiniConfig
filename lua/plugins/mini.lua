@@ -19,9 +19,6 @@ return {
       },
       silent = true,
     }
-    require('mini.align').setup {}
-    require('mini.bufremove').setup {}
-    require('mini.indentscope').setup {}
     require('mini.pairs').setup {
       mappings = {
         ['<'] = { action = 'open', pair = '<>', neigh_pattern = '[^\\].' },
@@ -34,5 +31,10 @@ return {
     require('mini.statusline').setup {
       use_icons = false,
     }
+    require('mini.align').setup {}
+    require('mini.bufremove').setup {}
+    require('mini.bracketed').setup {}
+    require('mini.fuzzy').setup {}
+    require('mini.indentscope').setup {}
   end,
 }

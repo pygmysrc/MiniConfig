@@ -7,15 +7,6 @@ local opts = {
 map('n', ' ', ' ', opts)
 map('x', ' ', ' ', opts)
 
--- Leader mappings
-map('n', '<leader>d', ':bdelete<cr>', opts) -- delete buffer
-map('n', '<leader>e', require('oil').open)
-map('n', '<leader>f', vim.lsp.buf.format)   -- lsp formatting
-map('n', '<leader>o', ':only!<cr>', opts)   -- only window
-map('n', '<leader>w', ':set wrap!<cr>')     -- toggle wrap
-map('n', '<leader>x', ':xa<cr>', opts)      -- save / quit
-map('n', '<leader>z', ':only!<cr>', opts)   -- only window
-
 map("n", "<tab>", "<cmd>e #<cr>")           -- switch buffers
 map('n', 'H', ':bprev<cr>', opts)
 map('n', 'L', ':bnext<cr>', opts)
@@ -28,10 +19,6 @@ map("v", "<", "<gv")                     -- better indenting
 map("v", ">", ">gv")
 
 map("n", "gw", "*N", opts) -- search word
-
--- Clear search with <esc>
-map("n", "<esc>", "<cmd>noh<cr><esc>", opts)
-map({ "n", "v" }, "<leader>d", [["_d]])
 
 -- Highlights under cursor
 map("n", "<leader>ui", vim.show_pos)
@@ -51,7 +38,29 @@ map("n", "n", "nzzzv")            -- search next
 map("n", "N", "Nzzzv")            -- search prev
 
 -- From lazy.nvim
---
+-- Move to window using the <ctrl> hjkl keys
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-l>", "<C-w>l")
+
+-- Add undo break-points
+map("i", ",", ",<c-g>u")
+map("i", ".", ".<c-g>u")
+map("i", ";", ";<c-g>u")
+
+-- Clear search with <esc>
+map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
+
+-- Leader mappings
+map('n', '<leader>d', ':bdelete<cr>', opts) -- delete buffer
+map('n', '<leader>e', require('oil').open)
+map('n', '<leader>f', vim.lsp.buf.format)   -- lsp formatting
+map('n', '<leader>o', ':only!<cr>', opts)   -- only window
+map('n', '<leader>w', ':set wrap!<cr>')     -- toggle wrap
+map('n', '<leader>x', ':xa<cr>', opts)      -- save / quit
+map('n', '<leader>z', ':only!<cr>', opts)   -- only window
+
 -- Mini.Trailspace
 map('n', '<leader>th', ':lua MiniTrailspace.highlight()<cr>')
 map('n', '<leader>tl', ':lua MiniTrailspace.trim_last_lines()<cr>')
