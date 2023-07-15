@@ -21,9 +21,10 @@ return {
             'cssmodules_ls',
             'html',
             'jsonls',
+            'marksman',
+            'rome',
             'taplo',
             'tsserver',
-            'rome',
             'vimls',
             'yamlls'
           },

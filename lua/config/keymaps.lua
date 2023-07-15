@@ -4,10 +4,10 @@ local opts = {
   silent = true,
 }
 
-map('n', ' ', ' ', opts)
-map('x', ' ', ' ', opts)
+-- map('n', ' ', ' ', opts)
+-- map('x', ' ', ' ', opts)
 
-map("n", "<tab>", "<cmd>e #<cr>")           -- switch buffers
+map("n", "<tab>", "<cmd>e #<cr>") -- switch buffers
 map('n', 'H', ':bprev<cr>', opts)
 map('n', 'L', ':bnext<cr>', opts)
 
@@ -18,14 +18,12 @@ map('n', 'q', ':qa!<cr>', opts)          -- quit
 map("v", "<", "<gv")                     -- better indenting
 map("v", ">", ">gv")
 
-map("n", "gw", "*N", opts) -- search word
+map("n", "gw", "*N", opts) -- search word / selection
+map("v", "gw", "*", opts)  --
+
+map({ "n", "v" }, "<leader>s", '<cmd>!sort -u<cr>')
 
 map("n", "<leader>ui", vim.show_pos) -- highlights under cursor
-
-map({ "n", "v" }, "<leader>s", '!sort -u<cr>')
-
-map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
-map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
 
 -- Leader mappings
 map('n', '<leader>d', ':bdelete<cr>', opts) -- delete buffer
@@ -35,6 +33,7 @@ map('n', '<leader>o', ':only!<cr>', opts)   -- only window
 map('n', '<leader>w', ':set wrap!<cr>')     -- toggle wrap
 map('n', '<leader>x', ':xa<cr>', opts)      -- save / quit
 map('n', '<leader>z', ':only!<cr>', opts)   -- only window
+map('n', '<leader>l', ':Lazy<cr>', opts)
 
 -- Mini.Trailspace
 map('n', '<leader>th', ':lua MiniTrailspace.highlight()<cr>')

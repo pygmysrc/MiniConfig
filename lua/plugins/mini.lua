@@ -36,5 +36,6 @@ return {
     require('mini.bracketed').setup {}
     require('mini.fuzzy').setup {}
     require('mini.indentscope').setup {}
+    require('mini.trailspace').setup {}
   end,
 }
