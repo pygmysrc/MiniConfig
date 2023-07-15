@@ -3,7 +3,7 @@ local options = {
   clipboard = 'unnamedplus',
   cmdheight = 2,
   colorcolumn = '+1',
-  completeopt = { 'menuone', 'noinsert', 'noselect' },
+  completeopt = { 'menuone', 'noinsert', 'noselect' }, -- mostly for cmp
   complete = { '.', 'w', 'b', 'u', 't', 'i', 'kspell' },
   conceallevel = 0,
   expandtab = true,
@@ -24,11 +24,11 @@ local options = {
   sidescrolloff = 9999,
   shiftround = true,
   shiftwidth = 2,
-  -- shortmess = 'aoOstTWAIcCqFS',
+  shortmess = 'aoOstTWAIcCqFS',
   showmatch = true,
   showmode = false,
   showtabline = 2,
-  signcolumn = 'no',
+  signcolumn = 'yes',
   smartcase = true,
   smartindent = true,
   softtabstop = 2,
@@ -41,18 +41,23 @@ local options = {
   undofile = true,
   updatetime = 50,
   virtualedit = { 'block' },
-  whichwrap = 'bs<>[]hl',
-  -- wildmode = { 'list', 'longest' },
+  -- whichwrap = 'bs<>[]hl',
+  wildmode = { 'list', 'longest' },
   wrap = false,
   writebackup = false,
 }
+
+-- vim.opt.shortmess:append "c"                   -- hide all the completion messages, e.g. "-- XXX completion (YYY)", "match 1 of 2", "The only match", "Pattern not found"
+vim.opt.whichwrap:append "b,s,<,>,[,],h,l"     -- keys allowed to move to the previous/next line when the beginning/end of line is reached
+vim.opt.iskeyword:append "-"                   -- treats words with `-` as single words
+vim.opt.formatoptions:remove { "c", "r", "o" } -- This is a sequence of letters which describes how automatic formatting is to be done
 
 vim.cmd [[ filetype plugin indent on ]]
 -- vim.cmd [[ set shm+=cIt ]]
 
 -- clear registers
 vim.cmd [[ autocmd VimEnter * WipeReg ]]
-vim.cmd [[ 
+vim.cmd [[
 command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
  ]]
 
@@ -70,7 +75,6 @@ vim.g.bullets_enabled_file_types = {
   'text',
   'wiki',
 }
-
 
 -- autocmds
 local function augroup(name)
@@ -128,16 +132,26 @@ vim.api.nvim_create_autocmd("FileType", {
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
+    -- vim.cmd [[ only ]]
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
   end,
 })
 
--- wrap and check for spell in text filetypes
+-- wrap and check for spell
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("wrap_spell"),
   pattern = { "gitcommit", "markdown", "json" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
+  end,
+})
+
+-- always wrap
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("wrap"),
+  pattern = { "typescriptreact" },
+  callback = function()
+    vim.opt_local.wrap = true
   end,
 })

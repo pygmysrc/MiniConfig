@@ -23,6 +23,7 @@ return {
             'jsonls',
             'taplo',
             'tsserver',
+            'rome',
             'vimls',
             'yamlls'
           },
