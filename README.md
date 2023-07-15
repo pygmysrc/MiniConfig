@@ -15,16 +15,10 @@ minimal neovim config for use with termux, or without
 - [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
 - [folke/trouble.nvim](https://github.com/folke/trouble.nvim)
 - [folke/which-key.nvim](https://github.com/folke/which-key.nvim)
-- [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [stevearc/oil.nvim](https://github.com/stevearc/oil.nvim)
-
-## Lsp
-- [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 - [VonHeikemen/lsp-zero.nvim](https://github.com/VonHeikemen/lsp-zero.nvim)
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim)
-- [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
 - [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-- [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
 - [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 
 ## Colorschemes
