@@ -20,13 +20,29 @@ map("v", ">", ">gv")
 
 map("n", "gw", "*N", opts) -- search word
 
--- Highlights under cursor
-map("n", "<leader>ui", vim.show_pos)
+map("n", "<leader>ui", vim.show_pos) -- highlights under cursor
 
 map({ "n", "v" }, "<leader>s", '!sort -u<cr>')
 
 map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
+
+-- Leader mappings
+map('n', '<leader>d', ':bdelete<cr>', opts) -- delete buffer
+map('n', '<leader>e', require('oil').open)
+map('n', '<leader>f', vim.lsp.buf.format)   -- lsp formatting
+map('n', '<leader>o', ':only!<cr>', opts)   -- only window
+map('n', '<leader>w', ':set wrap!<cr>')     -- toggle wrap
+map('n', '<leader>x', ':xa<cr>', opts)      -- save / quit
+map('n', '<leader>z', ':only!<cr>', opts)   -- only window
+
+-- Mini.Trailspace
+map('n', '<leader>th', ':lua MiniTrailspace.highlight()<cr>')
+map('n', '<leader>tl', ':lua MiniTrailspace.trim_last_lines()<cr>')
+map('n', '<leader>tt', ':lua MiniTrailspace.trim()<cr>')
+map('n', '<leader>tu', ':lua MiniTrailspace.unhighlight()<cr>')
+
+-- Fuzzy matching
 
 -- From theprimeagen
 map("v", "J", ":m '>+1<CR>gv=gv") -- move lines
@@ -51,20 +67,3 @@ map("i", ";", ";<c-g>u")
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
-
--- Leader mappings
-map('n', '<leader>d', ':bdelete<cr>', opts) -- delete buffer
-map('n', '<leader>e', require('oil').open)
-map('n', '<leader>f', vim.lsp.buf.format)   -- lsp formatting
-map('n', '<leader>o', ':only!<cr>', opts)   -- only window
-map('n', '<leader>w', ':set wrap!<cr>')     -- toggle wrap
-map('n', '<leader>x', ':xa<cr>', opts)      -- save / quit
-map('n', '<leader>z', ':only!<cr>', opts)   -- only window
-
--- Mini.Trailspace
-map('n', '<leader>th', ':lua MiniTrailspace.highlight()<cr>')
-map('n', '<leader>tl', ':lua MiniTrailspace.trim_last_lines()<cr>')
-map('n', '<leader>tt', ':lua MiniTrailspace.trim()<cr>')
-map('n', '<leader>tu', ':lua MiniTrailspace.unhighlight()<cr>')
-
--- Fuzzy matching
