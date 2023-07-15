@@ -12,14 +12,14 @@ minimal neovim config for use with termux, or without
 
 ## Plugins
 - [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
-- [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)
-- [VonHeikemen/lsp-zero.nvim](https://github.com/VonHeikemen/lsp-zero.nvim)
 - [echasnovski/mini.nvim](https://github.com/echasnovski/mini.nvim)
 - [folke/trouble.nvim](https://github.com/folke/trouble.nvim)
 - [folke/which-key.nvim](https://github.com/folke/which-key.nvim)
-- [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [stevearc/oil.nvim](https://github.com/stevearc/oil.nvim)
+- [VonHeikemen/lsp-zero.nvim](https://github.com/VonHeikemen/lsp-zero.nvim)
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim)
+- [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 
 ## Colorschemes
 - [mcchrish/zenbones.nvim](https://github.com/mcchrish/zenbones.nvim)
