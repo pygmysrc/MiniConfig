@@ -3,7 +3,7 @@ return {
   tag = '0.1.2',
   dependencies = { 'nvim-lua/plenary.nvim' },
   cmd = "Telescope",
-  keys = {
+  keys = {-- {{{
     { "<leader>,",       "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
     { "<leader>/",       '<cmd>Telescope live_grep<cr>',                     desc = "Grep (root dir)" },
     { "<leader>:",       "<cmd>Telescope command_history<cr>",               desc = "Command History" },
@@ -36,12 +36,12 @@ return {
     -- { "<leader>sw", Util.telescope("grep_string"), desc = "Word (root dir)" },
     -- { "<leader>sW", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
     -- { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-  },
+  },-- }}}
   opts = {
     defaults = {
       prompt_prefix = " ",
       selection_caret = " ",
-      mappings = {
+      mappings = {-- {{{
         i = {
           ["<c-t>"] = function(...)
             return require("trouble.providers.telescope").open_with_trouble(...)
@@ -67,7 +67,7 @@ return {
             return require("telescope.actions").close(...)
           end,
         },
-      },
+      },-- }}}
     },
   },
 }

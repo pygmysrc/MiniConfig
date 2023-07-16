@@ -5,6 +5,9 @@ return {
     event = { 'BufReadPost', 'BufNewFile' },
     cmd = { 'TSUpdateSync' },
     opts = {
+      autotag = {
+        enable = true
+      },
       highlight = { enabled = true },
       indent = { enabled = true },
       ensure_installed = {

@@ -1,5 +1,20 @@
 return {
-  'folke/neodev.nvim',
+  { 'folke/neodev.nvim', lazy = false, opts = {} },
+  {
+    'dinhhuy258/git.nvim',
+    lazy = false,
+    opts = {}
+  },
+  -- Use treesitter to auto close and auto rename html tag
+  {
+    'windwp/nvim-ts-autotag',
+    opts = {}
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {} -- this is equalent to setup({}) function
+  },
   -- color schemes
   {
     'mcchrish/zenbones.nvim',
@@ -10,20 +25,16 @@ return {
     {
       'rose-pine/neovim',
       name = 'rose-pine',
-      config = function()
-        require('rose-pine').setup {
-          disable_background = true,
-        }
-      end,
+      opts = {
+        disable_background = true,
+      }
     },
   },
   {
     'ellisonleao/gruvbox.nvim',
     priority = 1000,
-    config = function()
-      require('gruvbox').setup {
-        transparent_mode = true,
-      }
-    end,
+    opts = {
+      transparent_mode = true,
+    }
   },
 }

@@ -8,7 +8,8 @@ minimal neovim config for use with termux, or without
 - lsp zero
 - native lsp formatting
 - code autocompletion
-- short intuitive key bindings
+- short key bindings
+- random colors
 
 ## Plugins
 - [folke/lazy.nvim](https://github.com/folke/lazy.nvim)

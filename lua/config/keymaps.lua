@@ -7,33 +7,33 @@ local opts = {
 -- map('n', ' ', ' ', opts)
 -- map('x', ' ', ' ', opts)
 
-map("n", "<tab>", "<cmd>e #<cr>") -- switch buffers
-map('n', 'H', ':bprev<cr>', opts)
-map('n', 'L', ':bnext<cr>', opts)
+map("n", "<tab>", "<cmd>e #<cr>", { desc = 'Switch buffer' }) -- switch buffers
+map('n', 'H', ':bprev<cr>', { desc = 'Previous buffer' })
+map('n', 'L', ':bnext<cr>', { desc = 'Next buffer' })
 
-map('n', '-', require('oil').open, opts) -- open files
-map('n', 's', ':w<cr>', opts)            -- save
-map('n', 'q', ':qa!<cr>', opts)          -- quit
+map('n', '-', require('oil').open, { desc = 'Files' }) -- open files
+map('n', 's', ':w<cr>', { desc = 'Save' })             -- save
+map('n', 'q', ':qa!<cr>', { desc = 'Quit' })           -- quit
 
-map("v", "<", "<gv")                     -- better indenting
+map("v", "<", "<gv")                                   -- better indenting
 map("v", ">", ">gv")
 
 map("n", "gw", "*N", opts) -- search word / selection
 map("v", "gw", "*", opts)  --
 
-map({ "n", "v" }, "<leader>s", '<cmd>!sort -u<cr>')
+map("v", "<leader>s", '!sort -u<cr>', { desc = 'Sort lines' })
 
-map("n", "<leader>ui", vim.show_pos) -- highlights under cursor
+map("n", "<leader>ui", vim.show_pos, { desc = 'Highlight under cursor', silent = true }) -- highlights under cursor
 
 -- Leader mappings
-map('n', '<leader>d', ':bdelete<cr>', opts) -- delete buffer
-map('n', '<leader>e', require('oil').open)
-map('n', '<leader>f', vim.lsp.buf.format)   -- lsp formatting
-map('n', '<leader>o', ':only!<cr>', opts)   -- only window
-map('n', '<leader>w', ':set wrap!<cr>')     -- toggle wrap
-map('n', '<leader>x', ':xa<cr>', opts)      -- save / quit
-map('n', '<leader>z', ':only!<cr>', opts)   -- only window
-map('n', '<leader>l', ':Lazy<cr>', opts)
+map('n', '<leader>e', require('oil').open, { desc = 'Open files' })   -- toggle oil
+map('n', '<leader>d', ':bdelete<cr>', { desc = 'Delete buffer' })     -- delete buffer
+map('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format buffer' }) -- lsp formatting
+map('n', '<leader>l', ':Lazy<cr>', { desc = 'Lazy' })                 -- toggle Lazy
+map('n', '<leader>o', ':only!<cr>', { desc = 'Only window' })         -- only window
+map('n', '<leader>w', ':set wrap!<cr>', { desc = 'Toggle wrap' })     -- toggle wrap
+map('n', '<leader>x', ':xa<cr>', { desc = 'Save and quit' })          -- save / quit
+map('n', '<leader>z', ':only!<cr>', { desc = 'Only window' })         -- only window
 
 -- Mini.Trailspace
 map('n', '<leader>th', ':lua MiniTrailspace.highlight()<cr>')
@@ -66,3 +66,4 @@ map("i", ";", ";<c-g>u")
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
+

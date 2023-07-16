@@ -3,7 +3,6 @@ local options = {
   clipboard = 'unnamedplus',
   cmdheight = 2,
   colorcolumn = '+1',
-  completeopt = { 'menuone', 'noinsert', 'noselect' }, -- mostly for cmp
   complete = { '.', 'w', 'b', 'u', 't', 'i', 'kspell' },
   conceallevel = 0,
   expandtab = true,
