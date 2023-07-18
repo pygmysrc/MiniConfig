@@ -19,14 +19,11 @@ return {
           ensure_installed = {
             'astro',
             'cssls',
-            'cssmodules_ls',
             'html',
             'jsonls',
-            'eslint',
             'marksman',
-            'rome',
-            'taplo',
             'tsserver',
+            'taplo',
             'vimls',
             'yamlls'
           },
