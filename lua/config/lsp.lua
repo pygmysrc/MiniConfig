@@ -29,11 +29,6 @@ require('lspconfig').tsserver.setup {
     print('tsserver attached')
   end,
 }
--- require('lspconfig').rome.setup {
---   on_attach = function(client, bufnr)
---     lsp.default_keymaps { buffer = bufnr }
---   end,
--- }
 
 require('lspconfig').jsonls.setup {
   settings = {
@@ -57,7 +52,11 @@ require('lspconfig').yamlls.setup {
   },
 }
 
--- disable language servers
-lsp.skip_server_setup({'eslint', 'tsserver'})
-
 lsp.setup()
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  desc = 'LSP actions',
+  callback = function(event)
+    -- Create your keybindings here...
+  end
+})

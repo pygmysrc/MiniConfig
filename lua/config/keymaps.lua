@@ -1,69 +1,121 @@
-local map = vim.keymap.set
+local keys = vim.keymap.set
 local opts = {
   noremap = true,
   silent = true,
 }
 
--- map('n', ' ', ' ', opts)
--- map('x', ' ', ' ', opts)
+keys("n", "<tab>", "<cmd>e #<cr>", { desc = 'Switch buffer' }) -- switch buffers
+keys('n', 'H', ':bprev<cr>', { desc = 'Previous buffer' })
+keys('n', 'L', ':bnext<cr>', { desc = 'Next buffer' })
 
-map("n", "<tab>", "<cmd>e #<cr>", { desc = 'Switch buffer' }) -- switch buffers
-map('n', 'H', ':bprev<cr>', { desc = 'Previous buffer' })
-map('n', 'L', ':bnext<cr>', { desc = 'Next buffer' })
+keys('n', '-', require('oil').open, { desc = 'Files' }) -- open files
+keys('n', 's', ':w<cr>', { desc = 'Save' })             -- save
+keys('n', 'Q', '<cmd>qa!<cr>', { desc = 'Quit' })       -- quit
 
-map('n', '-', require('oil').open, { desc = 'Files' }) -- open files
-map('n', 's', ':w<cr>', { desc = 'Save' })             -- save
-map('n', 'q', ':qa!<cr>', { desc = 'Quit' })           -- quit
+keys("v", "<", "<gv")                                   -- better indenting
+keys("v", ">", ">gv")
 
-map("v", "<", "<gv")                                   -- better indenting
-map("v", ">", ">gv")
-
-map("n", "gw", "*N", opts) -- search word / selection
-map("v", "gw", "*", opts)  --
-
-map("v", "<leader>s", '!sort -u<cr>', { desc = 'Sort lines' })
-
-map("n", "<leader>ui", vim.show_pos, { desc = 'Highlight under cursor', silent = true }) -- highlights under cursor
+keys("n", "gw", "*N", opts) -- search word / selection
+keys("v", "gw", "*", opts)  --
 
 -- Leader mappings
-map('n', '<leader>e', require('oil').open, { desc = 'Open files' })   -- toggle oil
-map('n', '<leader>d', ':bdelete<cr>', { desc = 'Delete buffer' })     -- delete buffer
-map('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format buffer' }) -- lsp formatting
-map('n', '<leader>l', ':Lazy<cr>', { desc = 'Lazy' })                 -- toggle Lazy
-map('n', '<leader>o', ':only!<cr>', { desc = 'Only window' })         -- only window
-map('n', '<leader>w', ':set wrap!<cr>', { desc = 'Toggle wrap' })     -- toggle wrap
-map('n', '<leader>x', ':xa<cr>', { desc = 'Save and quit' })          -- save / quit
-map('n', '<leader>z', ':only!<cr>', { desc = 'Only window' })         -- only window
+keys("v", "<leader>s", '!sort -u<cr>', { desc = 'Sort lines' })
+keys("n", "<leader>ui", vim.show_pos, { desc = 'Highlight under cursor', silent = true }) -- highlights under cursor
+keys('n', '<leader>e', require('oil').open, { desc = 'Open files' })                      -- toggle oil
+keys('n', '<leader>d', ':bd<cr>', { desc = 'Delete buffer' })                             -- delete buffer
+keys('n', '<leader>D', ':%bd<cr>', { desc = 'Delete buffer' })                            -- delete all buffers
+keys('n', '<leader>q', ':qa!<cr>', { desc = 'Quit' })                                     -- quit
+keys('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format buffer' })                    -- lsp formatting
+keys('n', '<leader>l', ':Lazy<cr>', { desc = 'Lazy' })                                    -- toggle Lazy
+keys('n', '<leader>o', ':only!<cr>', { desc = 'Only window' })                            -- only window
+keys('n', '<leader>w', ':set wrap!<cr>', { desc = 'Toggle wrap' })                        -- toggle wrap
+keys('n', '<leader>x', ':xa<cr>', { desc = 'Save and quit' })                             -- save / quit
+keys('n', '<leader>z', ':only!<cr>', { desc = 'Only window' })                            -- only window
+
+-- Mini.bufremove
+keys('n', 'q', ':lua MiniBufremove.delete()<cr>', { desc = 'Delete buffer', silent = true }) -- delete buffer
 
 -- Mini.Trailspace
-map('n', '<leader>th', ':lua MiniTrailspace.highlight()<cr>')
-map('n', '<leader>tl', ':lua MiniTrailspace.trim_last_lines()<cr>')
-map('n', '<leader>tt', ':lua MiniTrailspace.trim()<cr>')
-map('n', '<leader>tu', ':lua MiniTrailspace.unhighlight()<cr>')
+keys('n', '<leader>th', ':lua MiniTrailspace.highlight()<cr>')
+keys('n', '<leader>tl', ':lua MiniTrailspace.trim_last_lines()<cr>')
+keys('n', '<leader>tt', ':lua MiniTrailspace.trim()<cr>')
+keys('n', '<leader>tu', ':lua MiniTrailspace.unhighlight()<cr>')
 
 -- Fuzzy matching
 
+-- Trouble.nvim
+keys("n", "<leader>xx", function() require("trouble").open() end)
+keys("n", "<leader>xw", function() require("trouble").open("workspace_diagnostics") end)
+keys("n", "<leader>xd", function() require("trouble").open("document_diagnostics") end)
+keys("n", "<leader>xl", function() require("trouble").open("quickfix") end)
+keys("n", "<leader>xq", function() require("trouble").open("loclist") end)
+keys("n", "gR", function() require("trouble").open("lsp_references") end)
+
 -- From theprimeagen
-map("v", "J", ":m '>+1<CR>gv=gv") -- move lines
-map("v", "K", ":m '<-2<CR>gv=gv")
-map("n", "J", "mzJ`z")            -- better join
-map("n", "<C-d>", "<C-d>zz")      -- scroll up / down
-map("n", "<C-u>", "<C-u>zz")
-map("n", "n", "nzzzv")            -- search next
-map("n", "N", "Nzzzv")            -- search prev
+keys("v", "J", ":m '>+1<CR>gv=gv") -- move lines
+keys("v", "K", ":m '<-2<CR>gv=gv")
+keys("n", "J", "mzJ`z")            -- better join
+keys("n", "<C-d>", "<C-d>zz")      -- scroll up / down
+keys("n", "<C-u>", "<C-u>zz")
+keys("n", "n", "nzzzv")            -- search next
+keys("n", "N", "Nzzzv")            -- search prev
+
+-- lsp related
+keys("n", "gd", function()
+  vim.lsp.buf.definition()
+end)
+
+keys("n", "K", function()
+  vim.lsp.buf.hover()
+end)
+
+keys("n", "<leader>vws", function()
+  vim.lsp.buf.workspace_symbol('')
+end)
+
+keys("n", "<leader>vd", function()
+  vim.lsp.diagnostic.open_float()
+end)
+
+keys("n", "[d", function()
+  vim.lsp.diagnostic.goto_next()
+end)
+
+keys("n", "d[", function()
+  vim.lsp.diagnostic.goto_prev()
+end)
+
+keys("n", "<leader>vca", function()
+  vim.lsp.buf.code_action()
+end)
+
+keys("n", "<leader>vrr", function()
+  vim.lsp.buf.references()
+end)
+
+keys("n", "<leader>vrr", function()
+  vim.lsp.buf.rename()
+end)
+
+keys("i", "<C-h>", function()
+  vim.lsp.buf.signature_help()
+end)
+
+keys("n", "gu", "<cmd>diffget //2<cr>")
+keys("n", "gh", "<cmd>diffget //3<cr>")
 
 -- From lazy.nvim
--- Move to window using the <ctrl> hjkl keys
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
+
+-- Move around panes
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- Add undo break-points
-map("i", ",", ",<c-g>u")
-map("i", ".", ".<c-g>u")
-map("i", ";", ";<c-g>u")
+keys("i", ",", ",<c-g>u")
+keys("i", ".", ".<c-g>u")
+keys("i", ";", ";<c-g>u")
 
 -- Clear search with <esc>
-map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
-
+keys({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")

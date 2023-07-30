@@ -1,11 +1,11 @@
 return {
   { 'folke/neodev.nvim', lazy = false, opts = {} },
-  {
-    'dinhhuy258/git.nvim',
-    lazy = false,
-    opts = {}
-  },
-  -- Use treesitter to auto close and auto rename html tag
+  -- {
+  --   'dinhhuy258/git.nvim',
+  --   lazy = false,
+  --   opts = {}
+  -- },
+  -- Use treesitter to auto close and auto rename html tags
   {
     'windwp/nvim-ts-autotag',
     opts = {}
@@ -15,6 +15,8 @@ return {
     event = "InsertEnter",
     opts = {} -- this is equalent to setup({}) function
   },
+  -- for colorschemes without lsp highlights
+  { 'folke/lsp-colors.nvim', lazy = false, opts = {} },
   -- color schemes
   {
     'mcchrish/zenbones.nvim',

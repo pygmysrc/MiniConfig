@@ -5,7 +5,6 @@ minimal neovim config for use with termux, or without
 ## Features
 - lazy.nvim
 - lazy loading
-- lsp zero
 - native lsp formatting
 - code autocompletion
 - short key bindings
@@ -23,9 +22,9 @@ minimal neovim config for use with termux, or without
 - [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 
 ## Colorschemes
+- [ellisonleao/gruvbox.nvim](https://github.com/rose-pine/neovim)
 - [mcchrish/zenbones.nvim](https://github.com/mcchrish/zenbones.nvim)
 - [rose-pine/neovim](https://github.com/rose-pine/neovim)
-- [ellisonleao/gruvbox.nvim](https://github.com/rose-pine/neovim)
 
 ## Setup
 - backup config
