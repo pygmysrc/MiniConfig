@@ -47,9 +47,9 @@ local options = {
 }
 
 -- vim.opt.shortmess:append "c"                   -- hide all the completion messages, e.g. "-- XXX completion (YYY)", "match 1 of 2", "The only match", "Pattern not found"
-vim.opt.whichwrap:append "b,s,<,>,[,],h,l"     -- keys allowed to move to the previous/next line when the beginning/end of line is reached
-vim.opt.iskeyword:append "-"                   -- treats words with `-` as single words
-vim.opt.formatoptions:remove { "c", "r", "o" } -- This is a sequence of letters which describes how automatic formatting is to be done
+vim.opt.whichwrap:append 'b,s,<,>,[,],h,l' -- keys allowed to move to the previous/next line when the beginning/end of line is reached
+vim.opt.iskeyword:append '-' -- treats words with `-` as single words
+vim.opt.formatoptions:remove { 'c', 'r', 'o' } -- This is a sequence of letters which describes how automatic formatting is to be done
 
 vim.cmd [[ filetype plugin indent on ]]
 -- vim.cmd [[ set shm+=cIt ]]
@@ -77,28 +77,28 @@ vim.g.bullets_enabled_file_types = {
 
 -- autocmds
 local function augroup(name)
-  return vim.api.nvim_create_augroup("miniconfig_" .. name, { clear = true })
+  return vim.api.nvim_create_augroup('miniconfig_' .. name, { clear = true })
 end
 
 -- Check if we need to reload the file when it changed
-vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
-  group = augroup("checktime"),
-  command = "checktime",
+vim.api.nvim_create_autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
+  group = augroup 'checktime',
+  command = 'checktime',
 })
 
 -- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-  group = augroup("highlight_yank"),
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = augroup 'highlight_yank',
   callback = function()
     vim.highlight.on_yank()
   end,
 })
 
 -- go to last loc when opening a buffer
-vim.api.nvim_create_autocmd("BufReadPost", {
-  group = augroup("last_loc"),
+vim.api.nvim_create_autocmd('BufReadPost', {
+  group = augroup 'last_loc',
   callback = function()
-    local exclude = { "gitcommit" }
+    local exclude = { 'gitcommit' }
     local buf = vim.api.nvim_get_current_buf()
     if vim.tbl_contains(exclude, vim.bo[buf].filetype) then
       return
@@ -112,34 +112,39 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 -- close some filetypes with <q>
-vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("close_with_q"),
+vim.api.nvim_create_autocmd('FileType', {
+  group = augroup 'close_with_q',
   pattern = {
-    "PlenaryTestPopup",
-    "help",
-    "lspinfo",
-    "man",
-    "notify",
-    "qf",
-    "spectre_panel",
-    "startuptime",
-    "tsplayground",
-    "neotest-output",
-    "checkhealth",
-    "neotest-summary",
-    "neotest-output-panel",
+    'PlenaryTestPopup',
+    'help',
+    'lspinfo',
+    'man',
+    'notify',
+    'qf',
+    'spectre_panel',
+    'startuptime',
+    'tsplayground',
+    'neotest-output',
+    'checkhealth',
+    'neotest-summary',
+    'neotest-output-panel',
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     -- vim.cmd [[ only ]]
-    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+    vim.keymap.set(
+      'n',
+      'q',
+      '<cmd>close<cr>',
+      { buffer = event.buf, silent = true }
+    )
   end,
 })
 
 -- wrap and check for spell
-vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("wrap_spell"),
-  pattern = { "gitcommit", "markdown", "json" },
+vim.api.nvim_create_autocmd('FileType', {
+  group = augroup 'wrap_spell',
+  pattern = { 'gitcommit', 'markdown', 'json' },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
@@ -147,9 +152,9 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- always wrap
-vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("wrap"),
-  pattern = { "typescriptreact" },
+vim.api.nvim_create_autocmd('FileType', {
+  group = augroup 'wrap',
+  pattern = { 'typescriptreact' },
   callback = function()
     vim.opt_local.wrap = true
   end,

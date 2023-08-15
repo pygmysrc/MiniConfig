@@ -8,11 +8,11 @@ return {
   opts = {
     plugins = { spelling = true },
     defaults = {
-      mode = { "n", "v" },
-      ["g"] = { name = "+goto" },
-      ["gz"] = { name = "+surround" },
-      ["]"] = { name = "+next" },
-      ["["] = { name = "+prev" },
+      mode = { 'n', 'v' },
+      ['g'] = { name = '+goto' },
+      ['gz'] = { name = '+surround' },
+      [']'] = { name = '+next' },
+      ['['] = { name = '+prev' },
       -- ["<leader><tab>"] = { name = "+tabs" },
       -- ["<leader>b"] = { name = "+buffer" },
       -- ["<leader>c"] = { name = "+code" },
@@ -27,8 +27,8 @@ return {
     },
   },
   config = function(_, opts)
-    local wk = require("which-key")
+    local wk = require 'which-key'
     wk.setup(opts)
-    wk.register(opts.defaults, { prefix = "<leader>" })
+    wk.register(opts.defaults, { prefix = '<leader>' })
   end,
 }

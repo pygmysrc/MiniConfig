@@ -19,15 +19,40 @@ local opts = {
   git = {
     timeout = 3000,
   },
-  install = {
-    colorscheme = { 'poimandres' },
-  },
   performance = {
     rtp = {
       disabled_plugins = {
         'getscript',
         'getscriptPlugin',
+        'gzip',
+        'matchit',
+        'matchparen',
+        'netrwPlugin',
+        'nvim',
+        'rplugin',
+        -- "spellfile",
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin',
       },
+    },
+  },
+  -- not using nerd fonts
+  ui = {
+    icons = {
+      cmd = '⌘',
+      config = '🛠',
+      event = '📅',
+      ft = '📂',
+      init = '⚙',
+      keys = '🗝',
+      plugin = '🔌',
+      runtime = '💻',
+      source = '📄',
+      start = '🚀',
+      task = '📌',
+      lazy = '💤 ',
     },
   },
 }

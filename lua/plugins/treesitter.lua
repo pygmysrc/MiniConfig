@@ -2,30 +2,30 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     config = function()
-      require 'nvim-treesitter.install'.prefer_git = false
-      require 'nvim-treesitter.install'.compilers = { "clang", "gcc" }
-      require 'nvim-treesitter.configs'.setup {}
+      require('nvim-treesitter.install').prefer_git = false
+      require('nvim-treesitter.install').compilers = { 'clang', 'gcc' }
+      require('nvim-treesitter.configs').setup {}
     end,
     build = ':TSUpdate',
     event = { 'BufReadPost', 'BufNewFile' },
     cmd = { 'TSUpdateSync' },
     keys = {
-      { "<c-space>", desc = "Increment selection" },
-      { "<bs>",      desc = "Decrement selection", mode = "x" },
+      { '<c-space>', desc = 'Increment selection' },
+      { '<bs>', desc = 'Decrement selection', mode = 'x' },
     },
     opts = {
       autotag = {
-        enable = true
+        enable = true,
       },
       highlight = { enabled = true },
       indent = { enabled = true },
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
+          init_selection = '<C-space>',
+          node_incremental = '<C-space>',
           scope_incremental = false,
-          node_decremental = "<bs>",
+          node_decremental = '<bs>',
         },
       },
       ensure_installed = {

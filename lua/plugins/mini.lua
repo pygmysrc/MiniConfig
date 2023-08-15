@@ -27,23 +27,45 @@ return {
     require('mini.statusline').setup {
       use_icons = false,
     }
-    local hipatterns = require('mini.hipatterns')
-    hipatterns.setup({
+    -- remove columns for a better look
+    MiniStatusline.section_location = function(args)
+      -- Use virtual column number to allow update when past last column
+      if MiniStatusline.is_truncated(args.trunc_width) then
+        return '%l %2v'
+      end
+      -- Use `virtcol()` to correctly handle multi-byte characters
+      return '%l %L %2v %-2{virtcol("$") - 1}'
+    end
+    local hipatterns = require 'mini.hipatterns'
+    hipatterns.setup {
       highlighters = {
         -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
-        fixme     = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
-        hack      = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
-        todo      = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
-        note      = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
+        fixme = {
+          pattern = '%f[%w]()FIXME()%f[%W]',
+          group = 'MiniHipatternsFixme',
+        },
+        hack = {
+          pattern = '%f[%w]()HACK()%f[%W]',
+          group = 'MiniHipatternsHack',
+        },
+        todo = {
+          pattern = '%f[%w]()TODO()%f[%W]',
+          group = 'MiniHipatternsTodo',
+        },
+        note = {
+          pattern = '%f[%w]()NOTE()%f[%W]',
+          group = 'MiniHipatternsNote',
+        },
         -- Highlight hex color strings (`#rrggbb`) using that color
         hex_color = hipatterns.gen_highlighter.hex_color(),
       },
-    })
+    }
     require('mini.align').setup {}
-    require('mini.bufremove').setup {}
     require('mini.bracketed').setup {}
+    require('mini.bufremove').setup {}
     require('mini.fuzzy').setup {}
     require('mini.indentscope').setup {}
+    require('mini.sessions').setup {}
     require('mini.trailspace').setup {}
   end,
 }

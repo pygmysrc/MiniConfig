@@ -1,98 +1,67 @@
 return {
-    { 'neovim/nvim-lspconfig' }, -- Required
   {
-    'williamboman/mason.nvim',
-    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
-    opts = {
-      ensure_installed = {
-        "stylua",
-        "shfmt",
-        "prettierd",
-        -- "flake8",
-      },
-    },
-  },
-  {
-    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
+    event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      require('mason').setup({})
-      require('mason-lspconfig').setup {
-        ensure_installed = {
-          'astro',
-          -- 'cssls',
-          'cssmodules_ls',
-          'html',
-          'jsonls',
-          'marksman',
-          'tsserver',
-          'taplo',
-          'vimls',
-          'yamlls'
-        },
+      -- after loading cmp
+      -- then setup your lsp server as usual
+      local lspconfig = require 'lspconfig'
+      local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+      require('mason-lspconfig').setup_handlers {
+        function(server_name)
+          lspconfig[server_name].setup {
+            capabilities = lsp_capabilities,
+          }
+        end,
       }
-    end,
-  },
-  {
-    'hrsh7th/nvim-cmp',
-    config = function()
-      local cmp = require 'cmp'
-      local luasnip = require 'cmp'
-      cmp.setup {
-        completion = {
-          completeopt = "menu,menuone,noinsert",
-        },
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
-        mapping = {
-          ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-          ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          ["<S-CR>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          ['<Tab>'] = function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
-            else
-              fallback()
-            end
-          end,
-          ['<S-Tab>'] = function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end,
-        },
-        sources = {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-          { name = 'buffer' },
-          { name = 'path' },
-        },
-        experimental = {
-          ghost_text = {
-            hl_group = "CmpGhostText",
+      -- example to setup lua_ls and enable call snippets
+      lspconfig.lua_ls.setup {
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = 'Replace',
+            },
           },
         },
       }
     end,
+    servers = {
+        jsonls = {},
+        tsserver = {},
+        lua_ls = {
+          -- mason = false, -- set to false if you don't want this server to be installed with mason
+          settings = {
+            Lua = {
+              workspace = {
+                checkThirdParty = false,
+              },
+              completion = {
+                callSnippet = "Replace",
+              },
+            },
+          },
+        },
+      },
+    dependencies = {
+      {
+        'williamboman/mason-lspconfig.nvim',
+        opts = {
+          ensure_installed = { 'lua_ls', 'tsserver' },
+        },
+        dependencies = {
+          {
+            'williamboman/mason.nvim',
+            opts = {
+              border = 'single',
+              ensure_installed = {
+                'stylua',
+                'prettierd',
+              },
+            },
+          },
+          { 'hrsh7th/cmp-nvim-lsp', opts = {} },
+        },
+      },
+    },
   },
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-buffer' },
-  { 'hrsh7th/cmp-path' },
-  { 'L3MON4D3/LuaSnip' },
 }
