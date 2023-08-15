@@ -48,6 +48,13 @@ function ColorMyNvim(color)
   hi(0, 'MiniStatuslineFileinfo', { bg = 'none' })
   hi(0, 'MiniStatuslineInactive', { bg = 'none' })
   hi(0, '', { bg = 'none' })
+  hi(0, 'CmpPmenu', { bg = 'black' })
+  hi(0, 'CursorLine', { bg = 'none' })
+  hi(0, 'Search', { bg = 'none' })
+  hi(0, 'PmenuSel', { bg = 'none' })
+  hi(0, 'CmpSel', { fg = 'black', bg = 'white' })
+  hi(0, 'CmpDoc', { fg = hlNormal.fg, bg = 'black' })
+  hi(0, 'CmpDocBorder', { fg = hlNormal.fg, bg = 'black' })
 end
 
 ColorMyNvim()
